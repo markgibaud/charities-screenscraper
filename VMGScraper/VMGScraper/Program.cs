@@ -6,16 +6,23 @@ namespace VMGScraper
     {
         static void Main(string[] args)
         {
-            var scraper = new VirginMoneyGivingScraper();
+            var virginMoneyGivingScraper = new VirginMoneyGivingScraper();
+            var myDonateScraper = new MyDonateScraper();
             try
             {
-                scraper.Scrape();
+                if (args[0] == "vmg" || args[0] == "both")
+                    virginMoneyGivingScraper.Scrape();
+                if (args[0] == "mydonate" || args[0] == "both")
+                    myDonateScraper.Scrape();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: {0}",ex.Message);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ERROR! Please take a screenshot of this window and send to Mark G.");
+                Console.WriteLine("Error Message: {0}",ex.Message);
+                Console.WriteLine("StackTrace: {0}",ex.StackTrace);
+                Console.ReadLine();
             }
-            
         }
     }
 }
