@@ -6,13 +6,15 @@ namespace VMGScraper
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Please enter 'vmg', 'mydonate' or 'both'");
+            var choice = Console.ReadLine();
             var virginMoneyGivingScraper = new VirginMoneyGivingScraper();
             var myDonateScraper = new MyDonateScraper();
             try
             {
-                if (args[0] == "vmg" || args[0] == "both")
+                if (choice == "vmg" || choice == "both")
                     virginMoneyGivingScraper.Scrape();
-                if (args[0] == "mydonate" || args[0] == "both")
+                if (choice == "mydonate" || choice == "both")
                     myDonateScraper.Scrape();
             }
             catch (Exception ex)
